@@ -53,6 +53,22 @@ export function removeFavLoc(key){
     }
 }
 
+export function setCurrCity(data){
+    return async(dispatch) => {
+        try{
+            const action = { type: "SET_CITY", data };
+            dispatch(action)
+
+
+        }catch(err){
+            console.log('Cannot load city', err);
+
+        }
+    
+    }
+
+}
+
 
 
 

@@ -42,7 +42,6 @@ export const HomePage = () => {
 
     const checkIfFav = async () => {
         const isFav = await appService.check(city[0].Key)
-        console.log(isFav);
         setFavIcon(isFav)
     }
 
