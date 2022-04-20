@@ -4,7 +4,6 @@ function loadFromStorage(key) {
 }
 
 function saveToStorage(key, val) {
-    console.log('value tu storage',key,val);
     localStorage[key] = JSON.stringify(val);
 }
 

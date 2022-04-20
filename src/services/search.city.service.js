@@ -12,8 +12,7 @@ export const searchCity = {
 
 }
 
-const KEY='DAILYF'
-const CURR_KEY='CURRWEATHER'
+
 
 
 
@@ -30,11 +29,14 @@ async function getSearchCity(city) {
 
 }
 
+
+
 async function getWeather(key) {
-    let data = await storageService.loadFromStorage(KEY) || []
-    if (!data.DailyForecasts) {
+    console.log(key);
+    let data = await storageService.loadFromStorage(`daily${key}`) || []
+    if (!data.DailyForecast) {
         const { data } = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy`)
-        localStorage.setItem(KEY, JSON.stringify(data))
+        localStorage.setItem(`daily${key}`, JSON.stringify(data))
         return data.DailyForecasts
     }
     return data.DailyForecasts
@@ -43,10 +45,10 @@ async function getWeather(key) {
 }
 
 async function getCurrWeather(key){
-    let data = await storageService.loadFromStorage(CURR_KEY) || []
+    let data = await storageService.loadFromStorage(`currWather${key}`) || []
     if(!data.length){
         const {data}=await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy`)
-        localStorage.setItem(CURR_KEY, JSON.stringify(data))
+        localStorage.setItem(`currWather${key}`, JSON.stringify(data))
         return data
     }
     return data

@@ -1,23 +1,26 @@
 import React, { useEffect, useState, useRef } from "react";
-import { searchCity } from "../services/search.city.service";
+import { useDispatch, useSelector } from 'react-redux'
+import { loadNewCity } from '../store/soldays.action'
 
+import { searchCity } from '../services/search.city.service'
 
 export const SearchArea = () => {
 
     const [display, setDisplay] = useState(false)
     const [options, setOptions] = useState([])
     const [search, setSearch] = useState({ city: '' })
+    const dispatch = useDispatch()
+
 
 
     useEffect(async () => {
-        let data = await searchCity.getSearchCity(search)
+        const data = await searchCity.getSearchCity(search)
         setOptions(data)
 
     }, [search])
 
 
     const onSearch = ({ target }) => {
-        console.log(target.value)
         const field = target.name
         const value = target.value
         setSearch(prevSearch => ({ ...prevSearch, [field]: value }))
@@ -28,6 +31,12 @@ export const SearchArea = () => {
         console.log(city);
         setSearch(prevSearch => ({ ...prevSearch, city: city.LocalizedName }))
         setDisplay(false)
+        selectCity(city)
+    }
+
+    const selectCity = (city) => {
+        dispatch(loadNewCity(city))
+
 
     }
 

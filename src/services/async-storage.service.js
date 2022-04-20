@@ -5,7 +5,8 @@ export const appService = {
     get,
     post,
     put,
-    check
+    check,
+    save
 }
 
 const STORAGE_KEY = 'SOLDAYSDB'
@@ -42,21 +43,23 @@ async function query() {
 //         .then(entities => entities.find(entity => entity._id === entityId))
 // }
 
+async function save(data){
+    var city = await storageService.loadFromStorage(STORAGE_KEY)
+    city[0]=data
+    storageService.saveToStorage(STORAGE_KEY, city)
 
-async function post(currweather, city, daily) {
+}
+
+
+async function post(city) {
     let location = {
         _id: _makeId(),
         isFav: true,
-        Key: city[0].Key,
-        currweather,
-        city,
-        daily
+        Key: city[0].data[0].Key,
+        city
     }
-    console.log(location);
     const favLocs = await storageService.loadFromStorage(FAVLOC_KEY) || []
-    console.log(favLocs);
     favLocs.unshift(location)
-    console.log(favLocs);
     storageService.saveToStorage(FAVLOC_KEY, favLocs)
     return favLocs
 
@@ -67,7 +70,6 @@ async function remove(favLovKey) {
     let locs = await storageService.loadFromStorage(FAVLOC_KEY) || []
     const idx = locs.findIndex(loc => loc.Key === favLovKey)
     locs.splice(idx, 1)
-    console.log(locs);
     storageService.saveToStorage(FAVLOC_KEY, locs)
     return locs
 }
