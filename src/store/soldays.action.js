@@ -18,10 +18,11 @@ export function loadCity() {
 
 }
 
-export function saveFavLoc(location){
+export function saveFavLoc(currweather,city,daily){
     return async(dispatch) => {
         try{
-            const data =await appService.post(location);
+            const data =await appService.post(currweather,city, daily);
+            console.log(data);
             const action = { type: "SET_FAVLOC", data };
             dispatch(action)
 
@@ -34,6 +35,24 @@ export function saveFavLoc(location){
     }
 
 }
+
+export function removeFavLoc(key){
+    return async(dispatch) => {
+        try{
+            const data =await appService.remove(key);
+            console.log(data);
+            const action = { type: "DELETE_FAVLOC", data };
+            dispatch(action)
+
+
+        }catch(err){
+            console.log('Cannot delete favorite location', err);
+
+        }
+    
+    }
+}
+
 
 
 

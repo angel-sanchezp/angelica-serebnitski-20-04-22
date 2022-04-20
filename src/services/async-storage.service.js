@@ -5,10 +5,11 @@ export const appService = {
     get,
     post,
     put,
+    check
 }
 
 const STORAGE_KEY = 'SOLDAYSDB'
-const FAVLOC_KEY='FAVLOC'
+const FAVLOC_KEY = 'FAVLOC'
 
 
 const gCity = [
@@ -42,15 +43,40 @@ async function query() {
 // }
 
 
-async function post(newFavLoc) {
-    console.log('newfavloc',newFavLoc);
-    newFavLoc._id = _makeId()
-    var favLocs= await storageService.loadFromStorage(FAVLOC_KEY)||[]
-    favLocs.unshift(newFavLoc)
-    localStorage.setItem(FAVLOC_KEY, JSON.stringify(favLocs))
-    return newFavLoc
+async function post(currweather, city, daily) {
+    let location = {
+        _id: _makeId(),
+        isFav: true,
+        Key: city[0].Key,
+        currweather,
+        city,
+        daily
+    }
+    console.log(location);
+    const favLocs = await storageService.loadFromStorage(FAVLOC_KEY) || []
+    console.log(favLocs);
+    favLocs.unshift(location)
+    console.log(favLocs);
+    storageService.saveToStorage(FAVLOC_KEY, favLocs)
+    return favLocs
 
 
+}
+
+async function remove(favLovKey) {
+    let locs = await storageService.loadFromStorage(FAVLOC_KEY) || []
+    const idx = locs.findIndex(loc => loc.Key === favLovKey)
+    locs.splice(idx, 1)
+    console.log(locs);
+    storageService.saveToStorage(FAVLOC_KEY, locs)
+    return locs
+}
+
+
+async function check(key) {
+    const favLocs = await storageService.loadFromStorage(FAVLOC_KEY) || []
+    const fav = favLocs.find(loc => loc.Key === key)
+    return fav ? true : false
 }
 
 
@@ -64,14 +90,6 @@ function put(entityType, updatedEntity) {
         })
 }
 
-function remove(entityType, entityId) {
-    return query(entityType)
-        .then(entities => {
-            const idx = entities.findIndex(entity => entity._id === entityId)
-            entities.splice(idx, 1)
-            _save(entityType, entities)
-        })
-}
 
 function get(entityType, entityId) {
     return query(entityType)
