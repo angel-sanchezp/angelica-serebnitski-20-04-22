@@ -1,0 +1,25 @@
+// SETUP
+@import 'setup/variables.scss';
+@import 'setup/functions.scss';
+@import 'setup/mixins.scss';
+@import 'setup/typography.scss';
+
+// BASICS
+@import 'basics/helpers.scss';
+@import 'basics/layout.scss';
+@import 'basics/base.scss';
+@import 'basics/buttons.scss';
+
+//  PAGES
+@import 'pages/home-page.scss';
+
+
+
+//  CMPS
+@import 'cmps/app-header.scss';
+@import 'cmps/app-search.scss';
+@import 'cmps/app-dailyList.scss';
+@import 'cmps/app-dailyPreview.scss';
+
+
+

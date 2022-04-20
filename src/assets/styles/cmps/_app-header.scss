@@ -1,0 +1,25 @@
+.app-header {
+    // height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: skyblue;
+    height: 20vh;
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+
+    .logo{
+        width: 25%;
+        margin-top: 97px;    }
+
+    .main-nav {
+        display: flex;
+        font-size: rem(20px);
+        color: #fc8345;
+        gap: 15px;
+        padding: 10px;
+        font-weight: bold;
+        // text-shadow: -2px 1px 5px black;
+        margin-inline-end: 1rem;
+    }
+}
