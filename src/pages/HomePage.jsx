@@ -4,7 +4,7 @@ import moment from 'moment'
 
 
 import { searchCity } from '../services/search.city.service'
-import { loadCity } from '../store/soldays.action'
+import { loadCity, saveFavLoc } from '../store/soldays.action'
 
 import { SearchArea } from "../cmps/SearchArea"
 import { CityDetailsList } from '../cmps/CityDetailsList'
@@ -27,7 +27,6 @@ export const HomePage = () => {
     }, [])
 
     const getWeather = async () => {
-        console.log(city);
         const daily = await searchCity.getWeather(city[0].Key)
         setForecast(daily)
     }
@@ -36,6 +35,10 @@ export const HomePage = () => {
         const currWeather = await searchCity.getCurrWeather(city[0].Key)
         setCurrWeather(currWeather)
 
+    }
+
+    const saveFav=()=>{
+        dispatch(saveFavLoc(currWeather))
     }
 
 
@@ -49,7 +52,7 @@ export const HomePage = () => {
                 {city.length &&
                     <div className="location">
                         <h1>{city[0].LocalizedName}-{city[0].Country.LocalizedName}</h1>
-                        <button>🤍</button>
+                        <button onClick={saveFav}>🤍</button>
                         {currWeather.length &&
                             <div className="weather-card" style={{width:'50%', marginLeft:'25%'}}>
                                 <div className="img-div">

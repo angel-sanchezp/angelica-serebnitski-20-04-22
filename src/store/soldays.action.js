@@ -14,7 +14,24 @@ export function loadCity() {
 
         }
     
-    };
+    }
+
+}
+
+export function saveFavLoc(location){
+    return async(dispatch) => {
+        try{
+            const data =await appService.post(location);
+            const action = { type: "SET_FAVLOC", data };
+            dispatch(action)
+
+
+        }catch(err){
+            console.log('Cannot save favorite location', err);
+
+        }
+    
+    }
 
 }
 

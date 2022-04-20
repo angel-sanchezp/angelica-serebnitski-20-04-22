@@ -8,9 +8,10 @@ export const appService = {
 }
 
 const STORAGE_KEY = 'SOLDAYSDB'
+const FAVLOC_KEY='FAVLOC'
 
 
- const gCity = [
+const gCity = [
     {
         "Version": 1,
         "Key": "215854",
@@ -28,12 +29,10 @@ const STORAGE_KEY = 'SOLDAYSDB'
     }
 ]
 
- async function query() {
-     console.log('hi from async service query');
-
-    var entities =  await storageService.loadFromStorage(STORAGE_KEY) || _createCity()
+async function query() {
+    var entities = await storageService.loadFromStorage(STORAGE_KEY) || _createCity()
     return entities
-  
+
 }
 
 
@@ -43,16 +42,16 @@ const STORAGE_KEY = 'SOLDAYSDB'
 // }
 
 
-function post(entityType, newEntity) {
-    newEntity._id = _makeId()
-    return query(entityType)
-        .then(entities => {
-            entities.push(newEntity)
-            _save(entityType, entities)
-            return newEntity
-        })
-}
+async function post(newFavLoc) {
+    console.log('newfavloc',newFavLoc);
+    newFavLoc._id = _makeId()
+    var favLocs= await storageService.loadFromStorage(FAVLOC_KEY)||[]
+    favLocs.unshift(newFavLoc)
+    localStorage.setItem(FAVLOC_KEY, JSON.stringify(favLocs))
+    return newFavLoc
 
+
+}
 
 
 function put(entityType, updatedEntity) {
