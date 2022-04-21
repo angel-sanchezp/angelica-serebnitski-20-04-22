@@ -1,4 +1,35 @@
 .fav-locations-container{
     padding-left: 10%;
     padding-right: 10%;
+    width: 100%;
+    display: flex;
+
+    .weather-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+        background-color: rgb(116 118 119 / 41%);;
+        color: $clr2;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-left: 30px;
+
+    
+        .weather-card :hover {
+            background-color: rgba(245, 245, 245, 0.747);
+        }
+    
+        .img-div {
+            height: 74px;
+            margin-bottom: 18px;
+            width: 58px;
+        }
+    
+        .clean-link {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
 }

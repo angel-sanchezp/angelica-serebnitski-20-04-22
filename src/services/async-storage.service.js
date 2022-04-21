@@ -31,7 +31,7 @@ const gCity = [
     }
 ]
 
-async function query() {
+async function query(STORAGE_KEY='SOLDAYSDB') {
     var entities = await storageService.loadFromStorage(STORAGE_KEY) || _createCity()
     return entities
 

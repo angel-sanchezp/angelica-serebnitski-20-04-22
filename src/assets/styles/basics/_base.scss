@@ -25,6 +25,10 @@ body {
 main {
   display: flex;
   flex-grow: 1;
+  padding-left: 84px;
+  padding-right: 84px;
+  margin-left: 10%;
+  margin-right: 13%;
 }
 
 img {
@@ -48,6 +52,7 @@ p {
 button {
   all: unset;
   cursor: pointer;
+  padding: 10px;
 }
 
 input,

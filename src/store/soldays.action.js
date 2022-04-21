@@ -27,6 +27,22 @@ export function loadCity() {
 
 }
 
+export function loadFav(){
+    return async(dispatch) => {
+        try{
+            const data =await appService.query('FAVLOC');
+            console.log(data);
+            const action = { type: "SET_FAVLOC", data };
+            dispatch(action)
+        }catch(err){
+            console.log('Cannot load favorites locations', err);
+
+        }
+    
+    }
+
+}
+
 
 
 export function saveFavLoc(city){
