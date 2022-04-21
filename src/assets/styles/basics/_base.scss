@@ -25,10 +25,10 @@ body {
 main {
   display: flex;
   flex-grow: 1;
-  padding-left: 84px;
-  padding-right: 84px;
-  margin-left: 10%;
-  margin-right: 13%;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
 img {
@@ -69,3 +69,13 @@ a {
   color: inherit;
 }
 
+@media screen and (min-width: 1020px){
+  main {
+    display: flex;
+    flex-grow: 1;
+    padding-left: 84px;
+    padding-right: 84px;
+    margin-left: 10%;
+    margin-right: 13%;
+  }
+}

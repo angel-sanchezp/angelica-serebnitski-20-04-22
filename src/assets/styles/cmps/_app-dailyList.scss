@@ -1,9 +1,15 @@
-.weather-list{
+.weather-list {
     width: 100%;
     margin-top: 50px;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
+    margin-bottom: 50px;
+}
 
+@media screen and (min-width: 1020px) {
+    .weather-list {
+        margin-bottom: 0px;
+    }
 }

@@ -1,6 +1,7 @@
 .app-header {
     // height: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     color: skyblue;
@@ -8,20 +9,62 @@
     padding: 0 2rem;
     margin-bottom: 2rem;
 
-    .logo{
-        width: 25%;
-        margin-top: 97px;    }
+    .logo {
+        width: 100%;
+        margin-top: -46px;
+        margin-left: 20%;
+
+    }
 
     .main-nav {
         display: flex;
         font-size: rem(20px);
         color: #fc8345;
         gap: 15px;
-        padding: 10px;
-        padding-right: 84px;
-        padding-left: 84px;
+        padding: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
         font-weight: bold;
         // text-shadow: -2px 1px 5px black;
-        margin-inline-end: 1rem;
+        margin-inline-end:0rem;
+        margin-top: -172px;
+
+    }
+}
+
+// DESKTOP-MODE
+@media screen and (min-width: 1020px) {
+    .app-header {
+        // height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: skyblue;
+        height: 20vh;
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+
+        .logo {
+            width: 25%;
+            margin-top: 97px;
+            margin-left: 0%;
+
+        }
+
+        .main-nav {
+            display: flex;
+            font-size: rem(20px);
+            color: #fc8345;
+            gap: 15px;
+            padding: 10px;
+            padding-right: 84px;
+            padding-left: 84px;
+            font-weight: bold;
+            // text-shadow: -2px 1px 5px black;
+            margin-inline-end: 1rem;
+            margin-top: 0px;
+
+        }
     }
 }
