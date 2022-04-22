@@ -11,6 +11,7 @@ export const Favorites = () => {
     const dispatch = useDispatch()
     let history = useHistory();
 
+    console.log(favLoc);
     const setCity = () => {
         const city = []
         city.push(favLoc[0])

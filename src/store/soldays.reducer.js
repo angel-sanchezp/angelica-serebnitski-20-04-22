@@ -18,3 +18,4 @@ export function soldaysReducer(state = initialState, action) {
     }
     return state;
 }
+

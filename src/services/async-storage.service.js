@@ -6,7 +6,8 @@ export const appService = {
     post,
     put,
     check,
-    save
+    save,
+    queryFav
 }
 
 const STORAGE_KEY = 'SOLDAYSDB'
@@ -31,8 +32,17 @@ const gCity = [
     }
 ]
 
-async function query(STORAGE_KEY='SOLDAYSDB') {
+async function query() {
     var entities = await storageService.loadFromStorage(STORAGE_KEY) || _createCity()
+    console.log(entities);
+    return entities
+
+}
+
+
+async function queryFav() {
+    var entities = await storageService.loadFromStorage(FAVLOC_KEY) 
+    console.log(entities);
     return entities
 
 }

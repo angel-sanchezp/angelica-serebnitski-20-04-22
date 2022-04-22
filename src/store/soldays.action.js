@@ -6,7 +6,6 @@ export function loadCity() {
     return async(dispatch) => {
         try{
             const data =await appService.query();
-            console.log(data);
             const currWeather = await searchCity.getCurrWeather(data[0].Key)
             const daily = await searchCity.getWeather(data[0].Key)
             const isFav = await appService.check(data[0].Key)
@@ -30,7 +29,7 @@ export function loadCity() {
 export function loadFav(){
     return async(dispatch) => {
         try{
-            const data =await appService.query('FAVLOC');
+            const data =await appService.queryFav();
             console.log(data);
             const action = { type: "SET_FAVLOC", data };
             dispatch(action)
@@ -96,10 +95,10 @@ export function setCurrCity(data){
 }
 
 export function loadNewCity(data){
-    return async() => {
+    return async(dispatch) => {
         try{
             await appService.save(data);
-            loadCity()
+            dispatch(loadCity())
         
         }catch(err){
             console.log('Cannot save favorite location', err);
