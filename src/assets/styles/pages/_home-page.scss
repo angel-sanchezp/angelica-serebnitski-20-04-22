@@ -9,7 +9,7 @@
             margin-left: 6%;
 
             .typing-container{
-                margin-left: 42%;
+                margin-left: 30%;
             }
             .typing-container p {
                 position: absolute;
@@ -19,6 +19,22 @@
                 margin-top: 27px;
             }
 
+        }
+    }
+}
+
+@media screen and (min-width: 1020px) {
+
+    .home-page-container {
+    
+        .daily-container {
+            .location {
+                .typing-container{
+                    margin-left: 42%;
+                }
+           
+    
+            }
         }
     }
 }
