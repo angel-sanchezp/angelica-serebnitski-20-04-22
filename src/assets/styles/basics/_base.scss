@@ -69,6 +69,18 @@ a {
   color: inherit;
 }
 
+// appear-on page
+
+.fade-appear{
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-appear.fade-appear-active{
+  opacity: 1;
+  transition: opacity 2000ms linear;
+}
+
 @media screen and (min-width: 1020px){
   main {
     display: flex;
