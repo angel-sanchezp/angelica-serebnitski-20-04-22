@@ -8,7 +8,8 @@ import axios from 'axios'
 export const searchCity = {
     getSearchCity,
     getWeather,
-    getCurrWeather
+    getCurrWeather,
+    getCurrKeyPos
 
 }
 
@@ -51,10 +52,12 @@ async function getCurrWeather(key){
         localStorage.setItem(`currWather${key}`, JSON.stringify(data))
         return data
     }
-    return data
+    return data    
+}
 
-
-    
+async function getCurrKeyPos(lat,long){
+    let {data} =await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy&q=${lat}%2C${long}`)
+    return data 
 }
 
 

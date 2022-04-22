@@ -28,7 +28,6 @@ export const HomePage = () => {
     }, [])
 
 
-
     const saveFav = () => {
         if (!favIcon) {
             dispatch(saveFavLoc(city))
@@ -80,9 +79,15 @@ export const HomePage = () => {
                                 </div>
                                 <label>{city[0].currWeather[0].WeatherText}</label>
                                 <label>Date: {moment(city[0].currWeather[0].LocalObservationDateTime).format("MMM D")}</label>
-
-                                {!unitC ? <label>Temperature: {city[0].currWeather[0].Temperature.Imperial.Value}{city[0].currWeather[0].Temperature.Imperial.Unit}</label> :
-                                    <label>Temperature: {city[0].currWeather[0].Temperature.Metric.Value}{city[0].currWeather[0].Temperature.Metric.Unit}</label>}
+                                <CSSTransition
+                                    in={appear}
+                                    appear={true}
+                                    timeout={1000}
+                                    classNames="fade"
+                                >
+                                    {!unitC ? <label>Temperature: {city[0].currWeather[0].Temperature.Imperial.Value}{city[0].currWeather[0].Temperature.Imperial.Unit}</label> :
+                                        <label>Temperature: {city[0].currWeather[0].Temperature.Metric.Value}{city[0].currWeather[0].Temperature.Metric.Unit}</label>}
+                                </CSSTransition>
                             </div>
                         </div> :
                         <h1>LODING...</h1>
@@ -91,7 +96,7 @@ export const HomePage = () => {
                     {city.length && <CityDetailsList selectedCity={city[0].daily} unitC={unitC} isDarkMode={isDarkMode} />}
 
                 </section>
-                </CSSTransition>
+            </CSSTransition>
         </div>
     )
 }
