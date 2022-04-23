@@ -13,24 +13,118 @@ export const appService = {
 const STORAGE_KEY = 'SOLDAYSDB'
 const FAVLOC_KEY = 'FAVLOC'
 
+const FavLoc = [
+    {
+        key: "178087",
+        city: [{
+            currWeather: [{
+                LocalObservationDateTime: "20-04-20T10:18:00+03:00",
+                WeatherIcon: 4,
+                WeatherText: "Clouds and sun",
+                Temperature: { Imperial: { Unit: "F", Value: "68" }, Metric: { Unit: "C", Value: "19.9" } }
+            }],
+            daily: [
+                {
+                    Date: "2022-04-19T07:00:00+03:00",
+                    Day: [{ Icon: 4, IconPhrase: "Intermittent clouds" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "72" } }, { Minimum: { Unit: "F", Value: "61" } }]
+                },
+                {
+                    Date: "2022-04-20T07:00:00+03:00",
+                    Day: [{ Icon: 2, IconPhrase: "Mostly sunny" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "70" } }, { Minimum: { Unit: "F", Value: "58" } }]
+                },
+                {
+                    Date: "2022-04-21T07:00:00+03:00",
+                    Day: [{ Icon: 2, IconPhrase: "Mostly sunny" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "71" } }, { Minimum: { Unit: "F", Value: "60" } }]
+                },
+                {
+                    Date: "2022-04-22T07:00:00+03:00",
+                    Day: [{ Icon: 4, IconPhrase: "Intermittent clouds" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "80" } }, { Minimum: { Unit: "F", Value: "65" } }]
+                },
+                {
+                    Date: "2022-04-23T07:00:00+03:00",
+                    Day: [{ Icon: 6, IconPhrase: "Mostly cloud" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "77" } }, { Minimum: { Unit: "F", Value: "62" } }]
+                }
+            ],
+            data:[{
+                Country:{LocalizedName:"Germany"},
+                Key:"178087",
+                LocalizedName:"Berlin",
+                Rank:10
+            }],
+            isFav:true,
+            _id:"c3ZxM"
+
+        }]
+    },
+    {
+        key: "215854",
+        city: [{
+            currWeather: [{
+                LocalObservationDateTime: "20-04-20T10:18:00+03:00",
+                WeatherIcon: 4,
+                WeatherText: "Clouds and sun",
+                Temperature: { Imperial: { Unit: "F", Value: "68" }, Metric: { Unit: "C", Value: "19.9" } }
+            }],
+            daily: [
+                {
+                    Date: "2022-04-19T07:00:00+03:00",
+                    Day: [{ Icon: 4, IconPhrase: "Intermittent clouds" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "72" } }, { Minimum: { Unit: "F", Value: "61" } }]
+                },
+                {
+                    Date: "2022-04-20T07:00:00+03:00",
+                    Day: [{ Icon: 2, IconPhrase: "Mostly sunny" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "70" } }, { Minimum: { Unit: "F", Value: "58" } }]
+                },
+                {
+                    Date: "2022-04-21T07:00:00+03:00",
+                    Day: [{ Icon: 2, IconPhrase: "Mostly sunny" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "71" } }, { Minimum: { Unit: "F", Value: "60" } }]
+                },
+                {
+                    Date: "2022-04-22T07:00:00+03:00",
+                    Day: [{ Icon: 4, IconPhrase: "Intermittent clouds" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "80" } }, { Minimum: { Unit: "F", Value: "65" } }]
+                },
+                {
+                    Date: "2022-04-23T07:00:00+03:00",
+                    Day: [{ Icon: 6, IconPhrase: "Mostly cloud" }],
+                    Temperature: [{ Maximum: { Unit: "F", Value: "77" } }, { Minimum: { Unit: "F", Value: "62" } }]
+                }
+            ],
+            data:[{
+                Country:{LocalizedName:"Israel"},
+                Key:"215854",
+                LocalizedName:"Tel Aviv",
+                Rank:31
+            }],
+            isFav:true,
+            _id:"jbckj"
+
+        }]
+    }
+]
+
 async function query() {
-    var entities = await storageService.loadFromStorage(STORAGE_KEY) || getPosition()
-    console.log(entities);
-    return entities
+    const data = await storageService.loadFromStorage(STORAGE_KEY) || getPosition()
+    return data
 
 }
-
 
 async function queryFav() {
-    var entities = await storageService.loadFromStorage(FAVLOC_KEY) 
-    console.log(entities);
+    var entities = await storageService.loadFromStorage(FAVLOC_KEY)
     return entities
 
 }
 
-async function save(data){
+async function save(data) {
     var city = await storageService.loadFromStorage(STORAGE_KEY)
-    city[0]=data
+    city[0] = data
     storageService.saveToStorage(STORAGE_KEY, city)
 
 }
@@ -39,14 +133,13 @@ async function save(data){
 async function post(city) {
     let location = {
         _id: utilService.makeId(),
-        isFav: true,
         Key: city[0].data[0].Key,
         city
     }
     const favLocs = await storageService.loadFromStorage(FAVLOC_KEY) || []
     favLocs.unshift(location)
     storageService.saveToStorage(FAVLOC_KEY, favLocs)
-    return favLocs
+    return location
 
 
 }
@@ -56,7 +149,7 @@ async function remove(favLovKey) {
     const idx = locs.findIndex(loc => loc.Key === favLovKey)
     locs.splice(idx, 1)
     storageService.saveToStorage(FAVLOC_KEY, locs)
-    return locs
+    return favLovKey
 }
 
 
@@ -70,18 +163,18 @@ async function check(key) {
 
 
 async function getPosition() {
-    let city=[]
-    const pos= await new Promise((resolve, reject) => {
+    let city = []
+    const pos = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 
-    const lat=pos.coords.latitude
-    const long=pos.coords.longitude
+    const lat = pos.coords.latitude
+    const long = pos.coords.longitude
 
-    const data= await searchCity.getCurrKeyPos(lat,long)
+    const data = await searchCity.getCurrKeyPos(lat, long)
     city.push(data)
     storageService.saveToStorage(STORAGE_KEY, city)
 
     return city
-   
+
 }

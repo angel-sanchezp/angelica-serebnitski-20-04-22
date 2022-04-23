@@ -33,7 +33,6 @@ async function getSearchCity(city) {
 
 
 async function getWeather(key) {
-    console.log(key);
     let data = await storageService.loadFromStorage(`daily${key}`) || []
     if (!data.DailyForecast) {
         const { data } = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy`)

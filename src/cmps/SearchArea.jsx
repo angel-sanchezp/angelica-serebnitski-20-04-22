@@ -40,7 +40,6 @@ export const SearchArea = () => {
     }
 
     const setCity = city => {
-        console.log(city);
         setSearch(prevSearch => ({ ...prevSearch, city: city.LocalizedName }))
         setDisplay(false)
         selectCity(city)
