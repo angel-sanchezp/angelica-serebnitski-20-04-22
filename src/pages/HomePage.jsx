@@ -61,7 +61,7 @@ export const HomePage = () => {
                 <section className='daily-container'>
                     {city.length ?
                         <div className="location">
-                            <div className="typing-container flex">
+                            <div className="typing-container">
                                 <TypingAnimation />
                                 <h1>{city[0].data[0].LocalizedName}-{city[0].data[0].Country.LocalizedName}</h1>
                             </div>

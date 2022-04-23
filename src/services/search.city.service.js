@@ -1,9 +1,6 @@
 import storageService from './storage-service'
 
 import axios from 'axios'
-// var axios = Axios.create({
-//     withCredentials: true
-// })
 
 export const searchCity = {
     getSearchCity,
@@ -12,10 +9,6 @@ export const searchCity = {
     getCurrKeyPos
 
 }
-
-
-
-
 
 async function getSearchCity(city) {
     const STORAGE_KEY =city.city
@@ -26,11 +19,7 @@ async function getSearchCity(city) {
         return data
     }
     return data 
-    // return data = data.filter(dt => dt.LocalizedName === city.city)
-
 }
-
-
 
 async function getWeather(key) {
     let data = await storageService.loadFromStorage(`daily${key}`) || []

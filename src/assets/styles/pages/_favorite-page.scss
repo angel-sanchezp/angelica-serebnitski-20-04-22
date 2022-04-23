@@ -10,21 +10,21 @@
         align-items: center;
         cursor: pointer;
         text-align: center;
-        background-color: rgb(116 118 119 / 41%);;
-        color: $clr2;
+        background-color: $clr2;;
+        color: $clr3;
         border-radius: 0.5rem;
         padding: 1rem;
-        margin-left: 30px;
+        margin-left: em(30px);
 
     
         .weather-card :hover {
-            background-color: rgba(245, 245, 245, 0.747);
+            background-color: $clr5;
         }
     
         .img-div {
-            height: 74px;
-            margin-bottom: 18px;
-            width: 58px;
+            height: em(74px);
+            margin-bottom: em(18px);
+            width: em(58px);
         }
     
         .clean-link {

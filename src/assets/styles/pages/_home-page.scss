@@ -4,11 +4,12 @@
 
     .daily-container {
         .location {
-            margin-top: 30px;
-            color: #fc8345;
+            margin-top: em(30px);
+            color: $clr1;
             margin-left: 6%;
 
             .typing-container{
+                display: flex;
                 margin-left: 30%;
             }
             .typing-container p {
@@ -16,7 +17,7 @@
                 font-size: 1.2em;
             }
             .typing-container h1 {
-                margin-top: 27px;
+                margin-top: em(27px);
             }
 
         }

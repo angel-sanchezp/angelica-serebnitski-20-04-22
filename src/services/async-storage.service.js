@@ -13,7 +13,7 @@ export const appService = {
 const STORAGE_KEY = 'SOLDAYSDB'
 const FAVLOC_KEY = 'FAVLOC'
 
-const FavLoc = [
+const gFavLoc = [
     {
         key: "178087",
         city: [{
@@ -27,27 +27,27 @@ const FavLoc = [
                 {
                     Date: "2022-04-19T07:00:00+03:00",
                     Day: [{ Icon: 4, IconPhrase: "Intermittent clouds" }],
-                    Temperature: [{ Maximum: { Unit: "F", Value: "72" } }, { Minimum: { Unit: "F", Value: "61" } }]
+                    Temperature: [{ Maximum: { Unit: "F", Value: "68" } }, { Minimum: { Unit: "F", Value: "58" } }]
                 },
                 {
                     Date: "2022-04-20T07:00:00+03:00",
                     Day: [{ Icon: 2, IconPhrase: "Mostly sunny" }],
-                    Temperature: [{ Maximum: { Unit: "F", Value: "70" } }, { Minimum: { Unit: "F", Value: "58" } }]
+                    Temperature: [{ Maximum: { Unit: "F", Value: "70" } }, { Minimum: { Unit: "F", Value: "70" } }]
                 },
                 {
                     Date: "2022-04-21T07:00:00+03:00",
                     Day: [{ Icon: 2, IconPhrase: "Mostly sunny" }],
-                    Temperature: [{ Maximum: { Unit: "F", Value: "71" } }, { Minimum: { Unit: "F", Value: "60" } }]
+                    Temperature: [{ Maximum: { Unit: "F", Value: "71" } }, { Minimum: { Unit: "F", Value: "69" } }]
                 },
                 {
                     Date: "2022-04-22T07:00:00+03:00",
                     Day: [{ Icon: 4, IconPhrase: "Intermittent clouds" }],
-                    Temperature: [{ Maximum: { Unit: "F", Value: "80" } }, { Minimum: { Unit: "F", Value: "65" } }]
+                    Temperature: [{ Maximum: { Unit: "F", Value: "65" } }, { Minimum: { Unit: "F", Value: "60" } }]
                 },
                 {
                     Date: "2022-04-23T07:00:00+03:00",
                     Day: [{ Icon: 6, IconPhrase: "Mostly cloud" }],
-                    Temperature: [{ Maximum: { Unit: "F", Value: "77" } }, { Minimum: { Unit: "F", Value: "62" } }]
+                    Temperature: [{ Maximum: { Unit: "F", Value: "62" } }, { Minimum: { Unit: "F", Value: "59" } }]
                 }
             ],
             data:[{
@@ -111,13 +111,13 @@ const FavLoc = [
 ]
 
 async function query() {
-    const data = await storageService.loadFromStorage(STORAGE_KEY) || getPosition()
+    const data = await storageService.loadFromStorage(STORAGE_KEY) || _getPosition()
     return data
 
 }
 
 async function queryFav() {
-    var entities = await storageService.loadFromStorage(FAVLOC_KEY)
+    var entities = await storageService.loadFromStorage(FAVLOC_KEY)|| _getDeaultFavLoc()
     return entities
 
 }
@@ -160,9 +160,7 @@ async function check(key) {
 }
 
 
-
-
-async function getPosition() {
+async function _getPosition() {
     let city = []
     const pos = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
@@ -177,4 +175,8 @@ async function getPosition() {
 
     return city
 
+}
+
+function _getDeaultFavLoc(){
+    return gFavLoc
 }
