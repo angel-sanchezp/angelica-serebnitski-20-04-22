@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/angelica-serebnitski-20-04-22/static/css/main.f4555d26.css",
+    "main.js": "/angelica-serebnitski-20-04-22/static/js/main.81d19e71.js",
+    "index.html": "/angelica-serebnitski-20-04-22/index.html",
+    "main.f4555d26.css.map": "/angelica-serebnitski-20-04-22/static/css/main.f4555d26.css.map",
+    "main.81d19e71.js.map": "/angelica-serebnitski-20-04-22/static/js/main.81d19e71.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4555d26.css",
+    "static/js/main.81d19e71.js"
+  ]
+}
