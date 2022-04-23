@@ -10,7 +10,7 @@
 
             .typing-container{
                 display: flex;
-                margin-left: 30%;
+                margin-left: 28%;
             }
             .typing-container p {
                 position: absolute;
@@ -20,10 +20,74 @@
                 margin-top: em(27px);
             }
 
+            .btns-actions{
+                margin-left: -10%;
+            }
+
+            .weather-card{
+                margin-left: 20%;
+            }
+
         }
     }
 }
 
+//BIG MOBILE SCREEN
+@media screen and (min-width: 500px){
+    .home-page-container {
+    
+        .daily-container {
+            .location {
+                .typing-container{
+                    margin-left: 33.5%;
+                }
+            }
+        }
+
+      
+          
+    }
+
+}
+
+//SMALL TABLET
+@media screen and (min-width: 620px){
+    .home-page-container {
+    
+        .daily-container {
+            .location {
+                .typing-container{
+                    margin-left: 37%;
+                }
+            }
+        }
+
+      
+          
+    }
+}
+
+//TABLET-MODE
+@media screen and (min-width: 800px) {
+
+    .home-page-container {
+    
+        .daily-container {
+            .location {
+                .typing-container{
+                    margin-left: 38%;
+                }
+            }
+        }
+
+      
+          
+    }
+}
+
+
+
+//DESKTOP-MODE
 @media screen and (min-width: 1020px) {
 
     .home-page-container {
@@ -31,7 +95,25 @@
         .daily-container {
             .location {
                 .typing-container{
-                    margin-left: 42%;
+                    margin-left: 35%;
+                }
+            }
+        }
+
+      
+          
+    }
+}
+
+//15inch+
+@media screen and (min-width: 1100px) {
+
+    .home-page-container {
+    
+        .daily-container {
+            .location {
+                .typing-container{
+                    margin-left: 38.5%;
                 }
             }
         }

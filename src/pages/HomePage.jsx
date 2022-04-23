@@ -65,12 +65,13 @@ export const HomePage = () => {
                                 <TypingAnimation />
                                 <h1>{city[0].data[0].LocalizedName}-{city[0].data[0].Country.LocalizedName}</h1>
                             </div>
+                            <div className="btns-actions">
                             <button onClick={saveFav}>{isFav ? '❤️' : '🤍'}</button>
                             <button onClick={toggelUnit}>{!unitC ? 'C🌡️' : 'F🌡️'}</button>
                             <button onClick={toggelDarkMode}>{!isDarkMode ? 'Ligth' : 'Dark'}</button>
+                            </div>
 
-
-                            <div className="weather-card" style={!isDarkMode ? { backgroundColor: 'rgba(49, 62, 76, 0.68)', color: 'whitesmoke', width: '50%', marginLeft: '25%' } : { backgroundColor: 'rgb(224 228 220 / 50%)', color: 'black', width: '50%', marginLeft: '25%' }}>
+                            <div className="weather-card" style={!isDarkMode ? { backgroundColor: 'rgba(49, 62, 76, 0.68)', color: 'whitesmoke', width: '50%' } : { backgroundColor: 'rgb(224 228 220 / 50%)', color: 'black', width: '50%' }}>
                                 <div className="img-div">
                                     <img src={`https://www.accuweather.com/images/weathericons/${city[0].currWeather[0].WeatherIcon}.svg`} />
                                 </div>

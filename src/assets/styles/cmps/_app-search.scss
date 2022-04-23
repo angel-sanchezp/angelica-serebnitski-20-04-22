@@ -1,15 +1,15 @@
-.search-container{
+.search-container {
     display: flex;
-    margin-left: 12%;
+    margin-left: 13.3%;
     margin-top: em(18px);
 
-    .input-search{
+    .input-search {
         border: 0;
         border-radius: em(500px);
         height: em(40px);
         padding: em(6px) em(48px);
         text-overflow: ellipsis;
-        width: 80%;
+        width: 60%;
         font-size: 0.875rem;
         line-height: 1rem;
         text-transform: none;
@@ -17,36 +17,60 @@
         margin-right: em(10px);
     }
 
-    .options-container{
+    .options-container {
         background-color: $clr3;
         margin-top: em(2px);
         color: $clr1;
         cursor: pointer;
-
     }
+}
 
+//BIG MOBILE SCREEN
+@media screen and (min-width: 500px){
+    .search-container {
+        margin-left: 18%;
+
+        .input-search {
+            padding: 0.375em 5em;
+        }
+    }
 
 }
 
+//SMALL TABLET
+@media screen and (min-width: 620px) {
+    .search-container {
+        margin-left: 22%;
 
+        .input-search {
+            padding: 0.375em 5em;
+        }
+    }
+}
+
+// TABLET MODDE
+@media screen and (min-width: 800px) {
+    .search-container {
+        margin-left: 35%;
+        margin-top: 2.375em;
+
+        .input-search {
+            width: 80%;
+            padding: 0.375em 3em;
+        }
+    }
+}
 
 // DESKTOP-MODE
 @media screen and (min-width: 1020px) {
-
-    .search-container{
-        margin-left: 38.5%;
+    .search-container {
+        margin-left: 25%;
         margin-top: em(-10px);
-    
-        .input-search{
-            margin-right: em(10px);
-        }
-    
-
-    
-    
     }
-
-
-
-
+}
+@media screen and (min-width: 1240px) {
+    .search-container {
+        margin-left: 34%;
+        margin-top: em(-10px);
+    }
 }

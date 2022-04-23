@@ -23,22 +23,88 @@
         padding-right: 0px;
         padding-left: 0px;
         font-weight: bold;
-        // text-shadow: -2px 1px 5px black;
         margin-inline-end:0rem;
-        margin-top: -172px;
+        padding-inline-start: 0rem;
+        margin-top: em(-172px);
+        font-size: 20px;
+
 
     }
 }
 
-// DESKTOP-MODE
+//BIG MOBILE SCREEN
+@media screen and (min-width: 500px){
+    .app-header{
+        .logo{
+            width: 90%;
+            margin-top: -60px;
+            margin-left: 20%;
+        }
+
+        .main-nav{
+            margin-top: -14.75em;
+            padding-inline-start: 0rem;
+            gap: 34px;
+        }
+    }
+
+}
+
+//TABLE MEDIUM SCREEN
+@media screen and (min-width: 620px){
+    .app-header{
+        margin-top: 50px;
+        .logo{
+            width: 500px;
+            margin-top: -8.5em;
+            margin-left: 25%;
+
+        }
+
+        .main-nav{
+            margin-top: -14.75em;
+            padding-inline-start: 4rem;
+            gap: 34px;
+        }
+    }
+
+}
+
+
+// TABLET MODE
+@media screen and (min-width: 800px){
+    .app-header{
+        flex-direction: row;
+        margin-top: em(-60px);
+
+        .logo{
+            width: 50%;
+            margin-top: em(222px);
+            margin-left: -10%;
+        }
+
+        .main-nav{
+            margin-top: em(98px);
+            margin-inline-end: 2rem;
+            padding-inline-start: 0rem;
+            gap: 15px;
+
+        }
+    }
+
+
+
+}
+
 @media screen and (min-width: 1020px) {
     .app-header {
         flex-direction: row;
+        margin-top: em(40px);
 
         .logo {
-            width: 25%;
-            margin-top: em(97px);
-            margin-left: 0%;
+            width: 40%;
+            margin-top: 10.0625em;
+            margin-left: 5%;
 
         }
 
@@ -48,8 +114,37 @@
             padding-right: em(84px);
             padding-left: em(84px);
             font-weight: bold;
-            margin-inline-end: 1rem;
-            margin-top: 0px;
+            margin-inline-end: 0rem;
+            margin-top: 53px;
+
+        }
+    }
+}
+
+
+// DESKTOP-MODE
+@media screen and (min-width: 1300px) {
+    .app-header {
+        flex-direction: row;
+        margin-top: em(40px);
+
+        .logo {
+            width: 40%;
+            margin-top: 10.0625em;
+            margin-left: 5%;
+
+        }
+
+        .main-nav {
+            display: flex;
+            padding: rem(10px);
+            padding-right: em(84px);
+            padding-left: em(84px);
+            font-weight: bold;
+            margin-inline-end: 10rem;
+            margin-top: 5px;
+            font-size: 22px;
+
 
         }
     }
