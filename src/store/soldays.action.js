@@ -78,7 +78,6 @@ export function saveFavLoc(city) {
             const action = { type: "SAVE_FAVLOC", data };
             dispatch(action)
 
-
         } catch (err) {
             console.log('Cannot save favorite location', err);
 
@@ -95,8 +94,10 @@ export function removeFavLoc(key) {
             const action = { type: "DELETE_FAVLOC", data };
             dispatch(action)
             dispatch(loadFav())
+
         } catch (err) {
             console.log('Cannot delete favorite location', err);
+
 
         }
 
