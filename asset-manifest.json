@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/angelica-serebnitski-20-04-22/static/css/main.f4555d26.css",
-    "main.js": "/angelica-serebnitski-20-04-22/static/js/main.c5613045.js",
+    "main.js": "/angelica-serebnitski-20-04-22/static/js/main.39548af4.js",
     "index.html": "/angelica-serebnitski-20-04-22/index.html",
     "main.f4555d26.css.map": "/angelica-serebnitski-20-04-22/static/css/main.f4555d26.css.map",
-    "main.c5613045.js.map": "/angelica-serebnitski-20-04-22/static/js/main.c5613045.js.map"
+    "main.39548af4.js.map": "/angelica-serebnitski-20-04-22/static/js/main.39548af4.js.map"
   },
   "entrypoints": [
     "static/css/main.f4555d26.css",
-    "static/js/main.c5613045.js"
+    "static/js/main.39548af4.js"
   ]
 }
