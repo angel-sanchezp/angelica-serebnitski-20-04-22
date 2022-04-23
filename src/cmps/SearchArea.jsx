@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux'
 import { loadNewCity } from '../store/soldays.action'
 
 import { searchCity } from '../services/search.city.service'

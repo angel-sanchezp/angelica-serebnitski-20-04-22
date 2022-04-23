@@ -7,9 +7,9 @@ export function TypingAnimation (){
             cursor={false}
             sequence={[
                 'Weather For Today in  ',
-                2000,
+                3000,
                 '5 Daily Forecast in ',
-                2000,
+                3000,
            
             ]}
             wrapper="p"
