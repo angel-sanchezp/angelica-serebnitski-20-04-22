@@ -18,6 +18,8 @@ export function loadCity() {
             const action = { type: "SET_CITY", city };
             dispatch(action)
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot load city', err);
 
         }
@@ -33,6 +35,8 @@ function checkIsFav(key) {
             const action = { type: "SET_ISFAV", isFav };
             dispatch(action)
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot check if is favotite location', err);
 
         }
@@ -47,6 +51,8 @@ export function toggleFav(isFav){
             const action = { type: "SET_ISFAV", isFav };
             dispatch(action)
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot set isfav', err);
 
         }
@@ -61,6 +67,8 @@ export function loadFav() {
             const action = { type: "SET_FAVLOC", data };
             dispatch(action)
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot load favorites locations', err);
 
         }
@@ -79,6 +87,8 @@ export function saveFavLoc(city) {
             dispatch(action)
 
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot save favorite location', err);
 
         }
@@ -96,6 +106,8 @@ export function removeFavLoc(key) {
             dispatch(loadFav())
 
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot delete favorite location', err);
 
 
@@ -112,6 +124,8 @@ export function loadNewCity(data) {
             dispatch(loadCity())
 
         } catch (err) {
+            const action = { type: "SET_ERROR", err };
+            dispatch(action)
             console.log('Cannot save favorite location', err);
 
         }

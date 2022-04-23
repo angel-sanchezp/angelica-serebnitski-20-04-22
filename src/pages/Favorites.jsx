@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { CSSTransition } from 'react-transition-group';
+import { Rings } from  'react-loader-spinner'
 
 import { loadNewCity } from '../store/soldays.action'
 
@@ -38,7 +39,8 @@ export const Favorites = () => {
                         <label>Temperature: {loc.city[0].currWeather[0].Temperature.Imperial.Value}{loc.city[0].currWeather[0].Temperature.Imperial.Unit}</label>
                     </div>
                 )):
-                <h1>LODING...</h1>
+                <div className='loader'><Rings color="#fc8345" height={110} width={110} /> </div>
+
             }
             </div>
 

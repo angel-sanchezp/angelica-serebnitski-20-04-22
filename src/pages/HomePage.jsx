@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { TypingAnimation } from '../cmps/TypingAnimation'
 import { CSSTransition } from 'react-transition-group';
-
+import { Rings } from  'react-loader-spinner'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -19,6 +19,7 @@ import { CityDetailsList } from '../cmps/CityDetailsList'
 export const HomePage = () => {
     const { city } = useSelector(state => state.soldaysModule)
     const { isFav } = useSelector(state => state.soldaysModule)
+    const {error}=useSelector(state => state.soldaysModule)
     const [unitC, setUnitC] = useState(false)
     const [isDarkMode, setDarkMode] = useState(false)
     const dispatch = useDispatch()
@@ -28,6 +29,17 @@ export const HomePage = () => {
         dispatch(loadFav())
 
     }, [])
+
+
+    useEffect(() => {
+
+        if(error){
+            toast.error("Something Ocurred!", {
+               theme: "dark"
+           });
+        }
+
+    }, [error])
 
     const notifySaved = () => toast.success("Location saved!", {
         theme: "dark"
@@ -101,7 +113,7 @@ export const HomePage = () => {
                                 </CSSTransition>
                             </div>
                         </div> :
-                        <h1>LODING...</h1>
+                        <div className='loader'><Rings color="#fc8345" height={110} width={110} /> </div>
                     }
 
                     {city.length && <CityDetailsList selectedCity={city[0].daily} unitC={unitC} isDarkMode={isDarkMode} />}

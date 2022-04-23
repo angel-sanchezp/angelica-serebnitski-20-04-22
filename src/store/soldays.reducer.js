@@ -3,7 +3,8 @@
 const initialState = {
     city: [],
     favLoc: [],
-    isFav:false
+    isFav:false,
+    error:null
 
 }
 
@@ -13,6 +14,8 @@ export function soldaysReducer(state = initialState, action) {
             return { ...state, city: [...action.city] }
         case 'SET_ISFAV':
             return { ...state, isFav: action.isFav } 
+        case 'SET_ERROR':
+            return { ...state, error: action.error } 
         case 'SET_FAVLOC':
             return { ...state, favLoc: [...action.data] } 
         case 'SAVE_FAVLOC':
