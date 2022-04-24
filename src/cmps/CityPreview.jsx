@@ -16,8 +16,8 @@ export function CityPreview({ dt, unitC , isDarkMode}) {
                 <label>Temperature Min: {dt.Temperature.Minimum.Value}{dt.Temperature.Minimum.Unit} </label>
             </React.Fragment> :
                 <React.Fragment>
-                    <label>Temperature Max: {((dt.Temperature.Maximum.Value-32)*5/9).toFixed(2)}-C</label>
-                    <label>Temperature Min: {((dt.Temperature.Minimum.Value-32)*5/9).toFixed(2)}-C</label>
+                    <label>Temperature Max: {((dt.Temperature.Maximum.Value-32)*5/9).toFixed(0)}C</label>
+                    <label>Temperature Min: {((dt.Temperature.Minimum.Value-32)*5/9).toFixed(0)}C</label>
                 </React.Fragment>
             }
         </div>
