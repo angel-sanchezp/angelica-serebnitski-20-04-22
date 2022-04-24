@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux'
 import { loadNewCity } from '../store/soldays.action'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { searchCity } from '../services/search.city.service'
 
@@ -21,8 +23,6 @@ export const SearchArea = () => {
     const [isListening, setIsListening] = useState(false)
     const dispatch = useDispatch()
 
-
-
     useEffect(async () => {
         const data = await searchCity.getSearchCity(search)
         setOptions(data)
@@ -31,7 +31,12 @@ export const SearchArea = () => {
 
     useEffect(() => {
         handleListen()
+        if (isListening) notifySpeak()
     }, [isListening])
+
+    const notifySpeak = () => toast.info("Speak", {
+        theme: "dark"
+    });
 
     const onSearch = ({ target }) => {
         const field = target.name

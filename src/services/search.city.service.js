@@ -14,7 +14,7 @@ async function getSearchCity(city) {
     const STORAGE_KEY =city.city
     let data = storageService.loadFromStorage(STORAGE_KEY)
     if (!data ||STORAGE_KEY!==city.city) {
-        const { data } = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy&q=${city.city}`)
+        const { data } = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=DejEihZA2RQaPJ6qxaD0BwYJaBXWGqL6&q=${city.city}`)
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
         return data
     }
@@ -24,7 +24,7 @@ async function getSearchCity(city) {
 async function getWeather(key) {
     let data = await storageService.loadFromStorage(`daily${key}`) || []
     if (!data.DailyForecast) {
-        const { data } = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy`)
+        const { data } = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=DejEihZA2RQaPJ6qxaD0BwYJaBXWGqL6`)
         localStorage.setItem(`daily${key}`, JSON.stringify(data))
         return data.DailyForecasts
     }
@@ -36,7 +36,7 @@ async function getWeather(key) {
 async function getCurrWeather(key){
     let data = await storageService.loadFromStorage(`currWather${key}`) || []
     if(!data.length){
-        const {data}=await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy`)
+        const {data}=await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${key}?apikey=DejEihZA2RQaPJ6qxaD0BwYJaBXWGqL6`)
         localStorage.setItem(`currWather${key}`, JSON.stringify(data))
         return data
     }
@@ -44,7 +44,7 @@ async function getCurrWeather(key){
 }
 
 async function getCurrKeyPos(lat,long){
-    let {data} =await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=kAHfVKXwLN8t95AbnbGv3yG1C82DQbvy&q=${lat}%2C${long}`)
+    let {data} =await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=DejEihZA2RQaPJ6qxaD0BwYJaBXWGqL6&q=${lat}%2C${long}`)
     return data 
 }
 
